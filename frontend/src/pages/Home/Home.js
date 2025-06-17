@@ -16,7 +16,7 @@ function Home() {
 
     function startRegister(){
       console.log('start register');
-      navigate('/register');
+      navigate('/authenticate');
     }
   return (
     <div className={styles.cardWrapper}>
@@ -34,7 +34,7 @@ function Home() {
         <Button onclick={startRegister} text="Get Started" icon="/images/arrow.png"/>
          <div className={styles.SigninWrapper}>
             <span className={styles.hasInvite}>Already have an account?</span>
-            <Link style={signInLinkStyle} to ='/login'><span>Sign in</span></Link>
+            
          </div>
        </Card>
   

@@ -1,0 +1,43 @@
+# === Node.js ===
+node_modules/
+.env
+.env.*
+
+
+# === Logs ===
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# === OS Junk ===
+.DS_Store
+Thumbs.db
+
+# === Build Output ===
+build/
+dist/
+
+# === VSCode ===
+.vscode/
+
+# === React Scripts Output (frontend) ===
+frontend/node_modules/
+frontend/build/
+
+# === Express Output (backend) ===
+backend/node_modules/
+
+# === Test Coverage ===
+coverage/
+
+# === IDEs & Editors ===
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# === Misc ===
+*.log
+*.local
+*.cache
+
