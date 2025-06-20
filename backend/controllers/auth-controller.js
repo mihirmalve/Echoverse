@@ -2,6 +2,7 @@ import otpService from "../services/otp-service.js";
 import hashService from "../services/hash-service.js";
 import userService from "../services/user-service.js";
 import  tokenService from "../services/token-service.js";
+import UserDto from "../dtos/user-dto.js";
 class AuthController {
 async sendOtp(req,res){
    
@@ -24,10 +25,11 @@ async sendOtp(req,res){
   // send otp
   
 try {
-  await otpService.sendBySms(phone,otp);
+  //await otpService.sendBySms(phone,otp);
   return res.json({
     hash: `${hash}.${expires}`,
     phone,
+    otp,
 
   })
 }
@@ -75,14 +77,21 @@ let user;
     // Generate tokens
     const {accessToken, refreshToken } =tokenService.generateTokens({id: user._id , activated: false});
 
-
+  await tokenService.storeRefreshToken(refreshToken, user._id)
 
 res.cookie('refreshToken',refreshToken,{
   maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
   httpOnly: true,
 })
+
+res.cookie('accessToken',accessToken,{
+  maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
+  httpOnly: true,
+})
     
-res.json({accessToken})
+
+const userDto = new UserDto(user);
+res.json({user: userDto,auth: true})
 
   }
 }

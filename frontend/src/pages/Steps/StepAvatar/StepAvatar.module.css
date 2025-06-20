@@ -1,0 +1,41 @@
+.subHeading {
+    color: #c4c5c5;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.avatarWrapper {
+    width: 120px;
+    height: 120px;
+    border: 6px solid #0077ff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin: 0 auto 20px auto; /* center and add spacing below */
+}
+
+.avatarImage {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.avatarInput {
+    display: none;
+}
+
+.avatarLabel {
+    color: #0077ff;
+    display: block;
+    text-align: center;
+    margin-bottom: 25px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.buttonWrapper {
+    display: flex;
+    justify-content: center;
+}
