@@ -41,7 +41,7 @@ class ActivateController {
         }
 
         // update user
-        const userId = req.user.id;
+        const userId = req.user._id;
         try {
             const user = await userService.findUser({ _id: userId });
             if (!user) {

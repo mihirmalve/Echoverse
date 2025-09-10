@@ -1,23 +1,49 @@
-.button{
-    background-color: #0077FF;
-    padding : 10px 20px;
+.button {
+    background: linear-gradient(135deg, #0077FF, #005FCC);
+    padding: 12px 28px;
     border: none;
     outline: none;
-    display : flex;
+    display: inline-flex;
     align-items: center;
-    margin : 0 auto;
+    justify-content: center;
     color: #fff;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 5px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 50px;
     cursor: pointer;
-    transition: all 0.3s ease in-out;
-  
-   
-}  
-.button:hover{
-    background-color: #014A9C;
-} 
-.arrow{
+    transition: all 0.25s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Shine sweep effect */
+.button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 70%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.15);
+    transform: skewX(-25deg);
+    transition: left 0.5s ease;
+}
+
+.button:hover::before {
+    left: 130%;
+}
+
+.button:hover {
+    background: linear-gradient(135deg, #0066E0, #004C99);
+}
+
+.arrow {
     margin-left: 10px;
+    width: 18px;
+    height: 18px;
+    transition: transform 0.3s ease;
+}
+
+.button:hover .arrow {
+    transform: translateX(6px); /* bas aage slide karega */
 }

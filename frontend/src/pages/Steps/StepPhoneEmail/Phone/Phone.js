@@ -18,7 +18,7 @@ const [error, setError] = useState('');
 const dispatch = useDispatch();
 
  async function submit() {
-  if (!phoneNumber) {
+  if (!phoneNumber|| phoneNumber.length < 10|| phoneNumber.length > 10) {
     setError("Please enter a valid phone number");
     return;
   }
@@ -36,7 +36,15 @@ const dispatch = useDispatch();
 
   return (
     <Card title="Enter Your Phone Number" icon="/images/Phone.png">
-     <TextInput value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
+    <TextInput
+  type="tel"   // 👈 "tel" use kar le, isme E ya . allowed nahi hota
+  value={phoneNumber}
+  onChange={(e) => {
+    const value = e.target.value.replace(/\D/g, ''); // sirf digits rakho
+    setPhoneNumber(value);
+  }}
+  maxLength={10}
+/>
       {error && <p className={styles.error}>{error}</p>}
     <div>
       <div className={styles.actionButtonWrap}> 

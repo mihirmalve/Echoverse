@@ -1,17 +1,26 @@
 import { Routes, Route,Navigate, useLocation} from "react-router-dom";
+import React, { useState } from 'react';
 import './App.css';
 import Home from "./pages/Home/Home.js";
 import Rooms from "./pages/Rooms/Rooms";
+import Room from "./pages/Room/Room";
 import Activate from "./pages/Activate/Activate";
 import Authenticate from "./pages/Authenticate/Authenticate";
 import Navigation from "./components/shared/Navigation/Navigation";
 import { useSelector } from "react-redux";
+import { useLoadingWithRefresh } from "./hooks/useLoadingWithRefresh.js";
+import Loader from "./components/shared/Loader/Loader";
+
 
 
 //const isAuth = false;
 //const user = {activated : true};
 function App() {
-  return (
+
+  const { loading } = useLoadingWithRefresh();
+  return loading?(
+    <Loader message="Loading please wait..."/>
+  ) :(
    <>
   <Navigation />
 
@@ -33,6 +42,12 @@ function App() {
     <Route path="/rooms" element={
     <ProtectedRoute>
       <Rooms />
+      </ProtectedRoute>} />
+
+
+    <Route path="/room/:id" element={
+    <ProtectedRoute>
+      <Room />
       </ProtectedRoute>} />
    </Routes>
    </>

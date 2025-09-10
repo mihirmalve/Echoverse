@@ -11,18 +11,26 @@ const userSchema = new Schema({
   phone:{
     type : String,
     required: true,
+    unique: true,
   },
   avatar: {
-    type: String,
-    required: false,
-  },
+            type: String,
+            required: false,
+            get: (avatar) => {
+                if (avatar) {
+                    return `${process.env.BASE_URL}${avatar}`;
+                }
+                return avatar;
+            },
+        },
   activated: {
     type: Boolean,
     default: false,
   },
 },
  {
-    timestamps: true
+    timestamps: true,
+    toJSON: { getters: true },
 });
 
 export default model("User", userSchema);

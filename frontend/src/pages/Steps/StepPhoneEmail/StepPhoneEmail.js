@@ -18,8 +18,8 @@ return (
     <div className={styles.cardWrapper}>
       <div>
       <div className={styles.buttonWrap}>
-      <button  className={`${styles.tabButton} ${type === 'phone' && styles.active}`} onClick={() => setType('phone')}> <img src="/images/Phone1.png" alt="phone" /></button>
-      <button className={`${styles.tabButton} ${type === 'email' && styles.active}`} onClick={() => setType('email')}><img src="/images/Email.png" alt="email" /></button> 
+   
+ 
       </div>
       <Component onNext={onNext}/>
       </div>

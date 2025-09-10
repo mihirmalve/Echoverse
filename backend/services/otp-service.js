@@ -16,13 +16,17 @@ class OtpService{
     return otp;
 }
 
-  async sendBySms(phone,otp){
-     return await client.messages.create({
-      to: phone,
-      from: process.env.SMS_FROM_NUMBER,
-      body: `Welcome to VOICE_SYNC, your OTP is ${otp}. It is valid for 2 minutes.`,
-     })
-  }
+  async sendBySms(phone, otp) {
+  // phone hamesha 10-digit milega frontend se
+  const formattedPhone = `+91${phone}`;
+
+  return await client.messages.create({
+    to: formattedPhone,
+    from: process.env.SMS_FROM_NUMBER,
+    body: `Welcome to Echoverse, your OTP is ${otp}. It is valid for 2 minutes.`,
+  });
+}
+
 
   async verifyOtp(hashedOtp, data) {
     let computedHash = await HashService.hashOtp(data);

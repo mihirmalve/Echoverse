@@ -1,0 +1,42 @@
+/* Loader.module.css */
+
+.message {
+  font-weight: 600;
+  font-size: 20px;
+  color: #e0e0e0;
+  letter-spacing: 0.5px;
+  animation: fadeIn 1.5s ease-in-out infinite alternate;
+}
+
+.spinner {
+  margin-bottom: 20px;
+  animation: spin 1s linear infinite;
+  filter: drop-shadow(0 0 6px rgba(84, 83, 224, 0.6));
+}
+
+.cardWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 250px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0.6;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+}

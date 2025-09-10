@@ -1,0 +1,109 @@
+.roomsHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 25px 0;
+    padding: 0 10px;
+    background: linear-gradient(145deg, #1c1c1c, #242424);
+    border-radius: 16px;
+    padding: 16px 20px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.35);
+}
+
+.left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.heading {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    position: relative;
+    color: #ffffff;
+    text-transform: capitalize;
+}
+
+.heading::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60%;
+    height: 3px;
+    border-radius: 4px;
+    background: linear-gradient(90deg, #0077ff, #00d4ff);
+    animation: slide 2s linear infinite;
+}
+
+@keyframes slide {
+    0% { width: 0; opacity: 0.4; }
+    50% { width: 60%; opacity: 1; }
+    100% { width: 0; opacity: 0.4; }
+}
+
+.searchBox {
+    background: #262626;
+    display: flex;
+    align-items: center;
+    padding: 10px 16px;
+    min-width: 280px;
+    border-radius: 30px;
+    transition: 0.3s ease-in-out;
+    box-shadow: inset 0 2px 4px rgba(255,255,255,0.05), 0 3px 8px rgba(0,0,0,0.3);
+}
+
+.searchBox:hover {
+    background: #303030;
+    transform: scale(1.02);
+}
+
+.searchInput {
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 8px 10px;
+    color: #fff;
+    width: 100%;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.startRoomButton {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #20bd5f, #009d3f);
+    padding: 10px 24px;
+    border-radius: 40px;
+    color: #fff;
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+}
+
+.startRoomButton span {
+    font-size: 15px;
+    margin-left: 8px;
+}
+
+.startRoomButton:hover {
+    background: linear-gradient(135deg, #25d36d, #00b84d);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.45);
+}
+
+.roomList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 28px;
+    margin-top: 50px;
+    padding-bottom: 40px;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}

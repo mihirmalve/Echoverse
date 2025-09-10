@@ -22,7 +22,7 @@ const Email = ({onNext}) => {
           <Button  onclick={onNext} text="Next" icon="/images/arrow.png"/>
       </div>
        <div className={styles.bottomParagraph}> 
-        <p>By entering your number, you’re agreeing to our Terms of Service and Privacy Policy. Thanks!</p>
+        <p>By entering your number, you’re agreeing to our Terms ofMOHT Service and Privacy Policy. Thanks</p>
        </div>
      
      </div>

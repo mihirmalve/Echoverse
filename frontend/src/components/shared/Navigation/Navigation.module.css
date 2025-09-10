@@ -1,3 +1,98 @@
-.navbar{
-    padding : 20px 0;
+.navbar {
+  padding: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid transparent;
+  transition: border 0.3s ease;
+}
+
+/* Hover bottom underline glow */
+.navbar:hover {
+  border-bottom: 2px solid #0077ff;
+}
+
+/* Brand text + logo */
+.navbar a {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 22px;
+  color: #ffffff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.navbar a img {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* Brand hover effect: text glow + logo pop */
+.navbar a:hover {
+  color: #22d3ee; /* cyan neon */
+  text-shadow: 0 0 6px #22d3ee, 0 0 12px rgba(34, 211, 238, 0.5);
+}
+
+.navbar a:hover img {
+  transform: scale(1.15) rotate(-5deg);
+  filter: drop-shadow(0 0 8px #22d3ee);
+}
+
+/* Right side container */
+.navRight {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Avatar upgrade */
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #0077ff;
+  transition: transform 0.25s ease, box-shadow 0.3s ease;
+}
+
+.avatar:hover {
+  transform: scale(1.1) rotate(-3deg);
+  box-shadow: 0 0 12px #0077ff, 0 0 20px rgba(0, 119, 255, 0.3);
+  cursor: pointer;
+}
+
+/* Logout button upgrade */
+.logoutButton {
+  background: #1d1d1d;
+  border: none;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.logoutButton svg {
+  width: 20px;
+  height: 20px;
+  color: #dcdcdc;
+  transition: color 0.3s ease, transform 0.25s ease;
+}
+
+.logoutButton:hover {
+  background: #252525;
+  box-shadow: 0 0 14px #0077ff, 0 0 28px rgba(0, 119, 255, 0.25);
+  transform: scale(1.05);
+}
+
+.logoutButton:hover svg {
+  color: #ffffff;
+  transform: rotate(12deg);
 }

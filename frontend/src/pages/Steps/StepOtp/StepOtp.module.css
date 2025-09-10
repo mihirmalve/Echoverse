@@ -9,3 +9,8 @@
 .actionButtonWrap {
     composes: actionButtonWrap from '../StepPhoneEmail/StepPhoneEmail.module.css';
 }
+.error {
+  color: red;
+  font-size: 14px;
+  margin-top: 8px;
+}

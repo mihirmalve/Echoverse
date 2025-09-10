@@ -10,7 +10,6 @@ function Home() {
         textDecoration : 'none',
         marginLeft : '10px',
         fontWeight : 'bold'
-        
     }
     const navigate = useNavigate();
 
@@ -20,24 +19,20 @@ function Home() {
     }
   return (
     <div className={styles.cardWrapper}>
-       <Card title="Welcome to Aura-Talk" icon="/images/Emoji.png">
+       <Card title="Welcome to Echoverse" icon="/images/download.svg">
+
        <div>
          <p className={styles.text}>
         Join live rooms on a wide range of topics or create your own 
         and bring people together through real-time audio. Whether
         you're here to speak, share ideas, or just listen and learn,
-        Aura-Talk lets you connect effortlessly. Explore rooms, engage
+        Echoverse lets you connect effortlessly. Explore rooms, engage
         with speakers, and be part of a community where every voice matters.
          Ready to start talking?
          </p> 
         </div>
         <Button onclick={startRegister} text="Get Started" icon="/images/arrow.png"/>
-         <div className={styles.SigninWrapper}>
-            <span className={styles.hasInvite}>Already have an account?</span>
-            
-         </div>
        </Card>
-  
     </div>
   )
 }

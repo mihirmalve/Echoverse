@@ -25,12 +25,10 @@ async sendOtp(req,res){
   // send otp
   
 try {
-  //await otpService.sendBySms(phone,otp);
+  await otpService.sendBySms(phone,otp);
   return res.json({
     hash: `${hash}.${expires}`,
     phone,
-    otp,
-
   })
 }
 catch (error) {
@@ -75,8 +73,8 @@ let user;
    
 
     // Generate tokens
-    const {accessToken, refreshToken } =tokenService.generateTokens({id: user._id , activated: false});
-
+    const {accessToken, refreshToken } =tokenService.generateTokens({_id: user._id , activated: false});
+   
   await tokenService.storeRefreshToken(refreshToken, user._id)
 
 res.cookie('refreshToken',refreshToken,{
@@ -94,9 +92,72 @@ const userDto = new UserDto(user);
 res.json({user: userDto,auth: true})
 
   }
+  
+  async refresh(req,res){
+    //get refresh token from cookies
+    const {refreshToken: refreshTokenFromCookie} = req.cookies;
+    //check if token is valid
+    let userData;
+    try {
+     userData = await tokenService.verifyRefreshToken(refreshTokenFromCookie);
+    } catch (error) {
+      return res.status(401).json({message: "Invalid Token"});
+    }
+    // check if token is in db
+   
+    try {
+        const token= await tokenService.findRefreshToken(userData._id, refreshTokenFromCookie);
+      if(!token){
+        return res.status(401).json({message: "Invalid Token"});
+      }
+    } catch (error) {
+      return res.status(500).json({message: "Internal error"});
+    }
+    // check if valid user
+    const user=  await userService.findUser({_id:userData._id});
+    if(!user){
+      return res.status(404).json({message: "User not found"});
+  }
+    // Generate new tokens
+    const {accessToken, refreshToken } =  tokenService.generateTokens({_id:userData._id});
+    // update refresh token in db
+    try {
+      await tokenService.updateRefreshToken(userData._id, refreshToken);
+    }
+    catch (error) {
+      return res.status(500).json({message: "Internal error"});
+    }  
+    // set cookies
+    res.cookie('refreshToken',refreshToken,{
+  maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
+  httpOnly: true,
+})
+
+res.cookie('accessToken',accessToken,{
+  maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
+  httpOnly: true,
+})
+    
+// send response
+const userDto = new UserDto(user);
+res.json({user: userDto,auth: true});
+
+
 }
 
+//logut user
+async logout(req,res){
+  // delete refresh token from db
+  const {refreshToken} = req.cookies;
+  await tokenService.removeToken(refreshToken);
+  // clear cookies
+  res.clearCookie('refreshToken');
+  res.clearCookie('accessToken');
 
+  res.json({user: null, auth:false})
+}
+
+}
 
 
 export default new AuthController();
